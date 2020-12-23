@@ -15,7 +15,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
-from torchvision import transforms, models, dataset
+from torchvision import transforms, models, datasets
 import torchvision.transforms.functional as tf
 import torch.backends.cudnn as cudnn
 
@@ -938,9 +938,9 @@ class MNISTAgent(BaseAgent):
     def _load_datasets(self):
         train_transforms, test_transforms = self._load_image_transforms()
         # build training dataset
-        train_dataset = dataset.MNIST(train=True, transform=train_transforms)
+        train_dataset = datasets.MNIST(train=True, transform=train_transforms)
         # build validation set
-        val_dataset = dataset.MNIST(train=False, transform=test_transforms)
+        val_dataset = datasets.MNIST(train=False, transform=test_transforms)
 
         # save some stuff to config
         self.config.data_params.n_channels = 3
