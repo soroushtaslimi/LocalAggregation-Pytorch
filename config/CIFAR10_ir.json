@@ -1,12 +1,11 @@
 {
     "exp_base": "/mnt/fs6/honglinc/experiments_data",
-    "debug":false,
-    "exp_name": "MNIST_la",
-    "exp_id": "res18_LA",
-    "agent": "MNISTAgent",
+    "debug": false,
+    "exp_name": "CIFAR10_ir",
+    "exp_id": "res18_IR",
+    "agent": "CIFAR10Agent",
     "cuda": true,
     "gpu_device": [0],
-    "faiss_gpu_device": null,
     "seed": 1337,
     "data_loader_workers": 32,
     "data_params": {
@@ -15,7 +14,11 @@
         "image_augment": true
     },
     "model_params": {
+        "embedding_dim": 128,
+        "hidden_dim": 256,
+        "n_filters": 64,
         "out_dim": 128,
+        "resnet": true,
         "resnet_version": "preact-resnet18"
     },
     "loss_params": {
@@ -25,20 +28,18 @@
         "kmeans_k": 30000,
         "n_kmeans": 10,
         "kmeans_freq": null,
-        "loss": "LocalAggregationLossModule"
+        "loss": "InstanceDiscriminationLossModule"
     },
     "optim_params": {
         "batch_size": 128,
         "learning_rate": 0.03,
-        "lr_decay_schedule": [160, 190],
-        "lr_decay_rate": 0.1,
+        "lr_decay_schedule": null,
         "momentum": 0.9,
         "weight_decay": 1e-4,
         "validate_freq": 1
     },
-    "num_epochs": 200,
+    "num_epochs": 10,
     "validate": true,
     "copy_checkpoint_freq": null,
-    "instance_exp_dir": "/mnt/fs6/honglinc/experiments_data/experiments/MNIST_ir/res18_IR",
     "pretrained_exp_dir": null
 }
